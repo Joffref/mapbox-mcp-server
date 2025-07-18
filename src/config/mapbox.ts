@@ -1,3 +1,4 @@
+import { env } from "@blaxel/core";
 /*
  * @Author: AidenYangX
  * @Email: xscs709560271@gmail.com
@@ -11,7 +12,7 @@
  * @returns {string} Mapbox Access Token
  */
 function getApiKey(): string {
-  const apiKey = process.env.MAPBOX_ACCESS_TOKEN;
+  const apiKey = env.MAPBOX_ACCESS_TOKEN;
   if (!apiKey) {
     console.error("MAPBOX_ACCESS_TOKEN environment variable is not set");
     process.exit(1);

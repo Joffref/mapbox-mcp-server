@@ -9,6 +9,69 @@
 
 MCP Server for the Mapbox API.
 
+## Deploy on Blaxel
+
+### Prerequisites
+
+- Node.js 16 or higher
+- TypeScript 4.5 or higher
+- A valid Mapbox API key
+- A Blaxel account
+
+### Installation
+
+First, install the blaxel cli. See [here](https://docs.blaxel.ai/cli-reference/introduction) for more details.
+
+Create a .env file in the root directory with your Mapbox API key:
+
+```env
+MAPBOX_ACCESS_TOKEN=your-mapbox-api-key
+```
+
+Deploy the server:
+
+```bash
+bl login # login to your Blaxel workspace
+bl deploy
+```
+
+Then, you can follow the link output by blaxel to see the server on the Blaxel website.
+
+Check out the [example](./example) for how to use the server.
+
+To deploy from your github repository automatically, you can add a github action to your repository. See [here](https://github.com/blaxel-ai/bl-action) for more details.
+
+Here's an example of a github action to deploy the server:
+
+```yaml
+name: Deploy to Blaxel
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Blaxel
+        uses: blaxel-ai/blaxel-action@v1
+        with:
+          workspace: ${{ secrets.BL_WORKSPACE }}
+          apikey: ${{ secrets.BL_API_KEY }}
+        env:
+          MAPBOX_ACCESS_TOKEN: ${{ secrets.MAPBOX_ACCESS_TOKEN }}
+```
+
+Just make sure to set the `BL_API_KEY` `BL_WORKSPACE` and `MAPBOX_ACCESS_TOKEN` environment variables in your github repository.
+
+To get an API key for your Blaxel account, you can follow the instructions [here](https://docs.blaxel.ai/Security/Access-tokens#api-keys).
+
+For more details on how to develop and deploy MCP servers on Blaxel, see [here](https://docs.blaxel.ai/Functions/Create-MCP-server).
+
 ## Features
 
 ### Navigation Tools

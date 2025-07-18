@@ -1,8 +1,8 @@
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { HandlerRegistry } from "./registry.js";
 import { NavigationHandler } from "./handlers/navigation.js";
 import { SearchHandler } from "./handlers/search.js";
+import { BlaxelMcpServerTransport } from "@blaxel/core";
 
 export class MapboxServer {
   private server: Server;
@@ -35,8 +35,8 @@ export class MapboxServer {
   }
 
   async start() {
-    const transport = new StdioServerTransport();
+    const transport = new BlaxelMcpServerTransport();
     await this.server.connect(transport);
-    console.error("Mapbox MCP Server running on stdio");
+    console.error("Mapbox MCP Server running on blaxel");
   }
 }

@@ -10,6 +10,9 @@
     "build"
   ],
   "scripts": {
+    "start": "tsx src/index.ts",
+    "prod": "node build/index.js",
+    "dev": "tsx watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\""
   },
@@ -23,6 +26,7 @@
   "license": "MIT",
   "description": "Mapbox integration for MCP servers",
   "dependencies": {
+    "@blaxel/core": "^0.2.21",
     "@modelcontextprotocol/sdk": "^1.0.4",
     "dotenv": "^16.4.7",
     "node-fetch": "^3.3.2",
@@ -30,6 +34,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "tsx": "^4.20.3"
   }
 }
